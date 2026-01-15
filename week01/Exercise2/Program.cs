@@ -48,14 +48,14 @@ class Program
             {
                 sign = "+";
             }
-        else if (lastDigit < 3)
-        {
-            sign = "-";
-        }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
         }
 
         // Special cases
-        if (letter == "A" && number!=100 &&  lastDigit < 4)
+        if (letter == "A" && number!=100 &&  lastDigit < 3)
         {
             sign = "-";  
         }
