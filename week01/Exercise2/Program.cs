@@ -38,31 +38,37 @@ class Program
            
         }
 
-        if (number %10 >= 7)
+        //SIGN
+    
+        int lastDigit = number % 10;
+
+        if (letter != "F")
         {
-            sign = "+";
-        }
-        else if (number % 10 < 3 )
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+        else if (lastDigit < 3)
         {
             sign = "-";
         }
-        else
-        {
-            sign = "";
         }
 
-        if (letter == "A" && sign == "+")
+        // Special cases
+        if (letter == "A" && number!=100 &&  lastDigit < 4)
         {
-            sign = "";
+            sign = "-";  
         }
 
-        if (letter == "F")
+        if ((letter == "A" && lastDigit>3) || number==100)
         {
-            sign = "";
+            sign = ""; 
         }
 
         
-            Console.WriteLine($"Your grade for this course is {letter} {sign}. ");
+
+        
+        Console.WriteLine($"Your grade for this course is {letter} {sign}. ");
 
 
         if (number >= 70)
