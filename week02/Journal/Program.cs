@@ -15,6 +15,9 @@ class Program
         prompts.Add("What was the strongest emotion I felt today?");
         prompts.Add("If I had one thing I could do over today, what would it be?");
 
+        //Entry list
+        List<Entry> entriesList = new List<Entry>();
+
 
         Console.WriteLine("Welcome to the Journal Program!");
 
@@ -29,13 +32,24 @@ class Program
         Console.Write("what would you like to do? Enter a number(1-5). ");
         string choice = Console.ReadLine();
 
+
+        //Instantation
+         prompGenerator randomPrompt = new prompGenerator();
+         Journal newJournal = new Journal();
+         Entry newEntry = new Entry();
+
+
         //while loop for user's choice
         while (choice != "5")
         {
             //write a new entry
             if (choice == "1")
             {
-                
+
+                newJournal._entries = entriesList;
+                string prompt = randomPrompt.GetRandomPrompt();
+                Console.WriteLine(prompt);
+
             }
             //Display current entries
             if (choice == "2")
