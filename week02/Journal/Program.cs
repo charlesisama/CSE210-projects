@@ -1,12 +1,24 @@
 using System;
+using System.IO;
+
 
 class Program
 {
     static void Main(string[] args)
     {
+
+        //list of prompts
+        List<string> prompts = new List<string>();
+        prompts.Add("Who was the most interesting person I interacted with today?");
+        prompts.Add("What was the best part of my day?");
+        prompts.Add("How did I see the hand of the lord in my life today?");
+        prompts.Add("What was the strongest emotion I felt today?");
+        prompts.Add("If I had one thing I could do over today, what would it be?");
+
+
         Console.WriteLine("Welcome to the Journal Program!");
 
-        Console.WriteLine("Please select one of the following");
+        Console.WriteLine("Hi dear, Please select one of the following");
 
         Console.WriteLine("1. Write");
         Console.WriteLine("2. Display");
@@ -43,6 +55,7 @@ class Program
 
         }
 
+        Console.WriteLine("Do have a great day!");
 
     }
 }
