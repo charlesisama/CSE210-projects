@@ -1,32 +1,47 @@
+
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
-    
-    //Method to add new entry to a list of entries
     public void AddEntry(Entry newEntry)
     {
         _entries.Add(newEntry);
     }
 
-    public void DisplayAll ()
+    public void DisplayAll()
     {
-        foreach(Entry en in _entries)
+        foreach (Entry en in _entries)
         {
-            Console.WriteLine(en);
+            en.Display();
         }
     }
 
-    public void SaveToFile (string filename)
+    public void SaveToFile(string filename)
     {
-        using(StreamWriter outPutFile = new StreamWriter(filename))
+        using (StreamWriter outPutFile = new StreamWriter(filename))
         {
-            outPutFile.WriteLine(_entries);
+            foreach (Entry entry in _entries)
+            {
+                outPutFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+            }
         }
     }
 
-    public void LoadFromFile (string filename)
+    public void LoadFromFile(string filename)
     {
-        string [] lines = System.IO.File.ReadAllLines(filename);
+        _entries.Clear();
+        string[] lines = File.ReadAllLines(filename);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+
+            Entry newEntry = new Entry();
+            newEntry._date = parts[0];
+            newEntry._promptText = parts[1];
+            newEntry._entryText = parts[2];
+
+            _entries.Add(newEntry);
+        }
     }
 }

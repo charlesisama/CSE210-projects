@@ -1,75 +1,60 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-
 
 class Program
 {
     static void Main(string[] args)
     {
+        PromptGenerator randomPrompt = new PromptGenerator();
+        Journal newJournal = new Journal();
 
-        //list of prompts
-        List<string> prompts = new List<string>();
-        prompts.Add("Who was the most interesting person I interacted with today?");
-        prompts.Add("What was the best part of my day?");
-        prompts.Add("How did I see the hand of the lord in my life today?");
-        prompts.Add("What was the strongest emotion I felt today?");
-        prompts.Add("If I had one thing I could do over today, what would it be?");
+        string choice = "";
 
-        //Entry list
-        List<Entry> entriesList = new List<Entry>();
-
-
-        Console.WriteLine("Welcome to the Journal Program!");
-
-        Console.WriteLine("Hi dear, Please select one of the following");
-
-        Console.WriteLine("1. Write");
-        Console.WriteLine("2. Display");
-        Console.WriteLine("3. Load");
-        Console.WriteLine("4. Save");
-        Console.WriteLine("5. Quit");
-
-        Console.Write("what would you like to do? Enter a number(1-5). ");
-        string choice = Console.ReadLine();
-
-
-        //Instantation
-         prompGenerator randomPrompt = new prompGenerator();
-         Journal newJournal = new Journal();
-         Entry newEntry = new Entry();
-
-
-        //while loop for user's choice
         while (choice != "5")
         {
-            //write a new entry
+            Console.WriteLine("\nWelcome to the Journal Program!");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
+            Console.Write("What would you like to do? ");
+
+            choice = Console.ReadLine();
+
             if (choice == "1")
             {
-
-                newJournal._entries = entriesList;
+                Entry newEntry = new Entry();
                 string prompt = randomPrompt.GetRandomPrompt();
+
                 Console.WriteLine(prompt);
+                Console.Write("> ");
+                string response = Console.ReadLine();
 
-            }
-            //Display current entries
-            if (choice == "2")
-            {
-                
-            }
-            //load enties from a file
-            if (choice == "3")
-            {
-                
-            }
-            //save entries to file
-            if (choice == "4")
-            {
-                
-            }
+                newEntry._promptText = prompt;
+                newEntry._entryText = response;
 
+                newJournal.AddEntry(newEntry);
+            }
+            else if (choice == "2")
+            {
+                newJournal.DisplayAll();
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Enter filename: ");
+                string filename = Console.ReadLine();
+                newJournal.LoadFromFile(filename);
+            }
+            else if (choice == "4")
+            {
+                Console.Write("Enter filename: ");
+                string filename = Console.ReadLine();
+                newJournal.SaveToFile(filename);
+            }
         }
 
-        Console.WriteLine("Do have a great day!");
-
+        Console.WriteLine("Have a great day!");
     }
 }
