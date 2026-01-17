@@ -22,7 +22,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outPutFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+                outPutFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}|{entry._mood}|Energy Level: {entry._energyLevel}/10");
             }
         }
     }

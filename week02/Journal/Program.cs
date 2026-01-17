@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+//ADDED CREATIVITY
+//ADDITIONAL ENTRIES (MOOD AND ENERGY LEVEL) TO THE JOURNAL ENTRIES AND SAVING IT TO THE JOURNAL
 class Program
 {
     static void Main(string[] args)
@@ -32,8 +34,20 @@ class Program
                 Console.Write("> ");
                 string response = Console.ReadLine();
 
+                Console.WriteLine("On a scale of 1 - 10, how is your energy level today?");
+                Console.Write("> ");
+                string energyLevel = Console.ReadLine();
+
+                Console.WriteLine("How are you feeling today? (Happy, Sad, Tired, Calm, Grateful, etc)");
+                Console.Write("> ");
+                string mood = Console.ReadLine();
+
+
+
                 newEntry._promptText = prompt;
                 newEntry._entryText = response;
+                newEntry._energyLevel = energyLevel;
+                newEntry._mood = mood;
 
                 newJournal.AddEntry(newEntry);
             }
