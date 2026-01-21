@@ -3,6 +3,7 @@ public class Reference
     private string _book;
     private int _chapter;
     private int _verse;
+    private int _startVerse;
     private int _endVerse;
 
     public Reference()
@@ -23,7 +24,7 @@ public class Reference
     {
         _book = book;
         _chapter = chapter;
-        int _startVerse = startVerse;
+        _startVerse = startVerse;
         _endVerse = endVerse;
     }
 
