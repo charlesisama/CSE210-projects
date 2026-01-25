@@ -1,3 +1,6 @@
+using System;
+using System.Text;
+
 public class Word
 {
     private string _text;
@@ -6,19 +9,46 @@ public class Word
     public Word(string text)
     {
         _text = text;
+        _isHidden = false;
     }
 
     public void Hide()
     {
-
+        _isHidden = true;
     }
+
     public void Show()
     {
-        
+        _isHidden = false;
+    }
+
+    public bool IsHidden()
+    {
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        if (!_isHidden)
+        {
+            return _text;
+        }
+
+    
+        StringBuilder sb = new StringBuilder();
+
+        foreach (char c in _text)
+        {
+            if (char.IsLetterOrDigit(c))
+            {
+                sb.Append('_');
+            }
+            else
+            {
+                sb.Append(c);
+            }
+        }
+
+        return sb.ToString();
     }
 }
