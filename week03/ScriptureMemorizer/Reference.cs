@@ -12,6 +12,7 @@ public class Reference
     private int _startVerse;
     private int _endVerse;
 
+    // Optional default constructor (not required, but allowed)
     public Reference()
     {
         _book = "";
@@ -21,18 +22,19 @@ public class Reference
         _endVerse = 0;
     }
 
-    //single verse
+    // Single verse: "John 3:16"
     public Reference(string book, int chapter, int verse)
     {
         _book = book;
         _chapter = chapter;
         _verse = verse;
 
+        // Range fields not used
         _startVerse = 0;
         _endVerse = 0;
     }
 
-    //mutiple verses e.g Prov 6:1-6
+    // Verse range: "Proverbs 3:5-6"
     public Reference(string book, int chapter, int startVerse, int endVerse)
     {
         _book = book;
@@ -40,22 +42,19 @@ public class Reference
         _startVerse = startVerse;
         _endVerse = endVerse;
 
+        // Single verse field not used
         _verse = 0;
     }
 
     public string GetDisplayText()
     {
-        // if verse is mutilple
+        //multiple verse
         if (_endVerse > 0)
         {
             return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
         }
 
         // single verse
-        else
-        {
-            return $"{_book} {_chapter}:{_verse}";
-        }
-        
+        return $"{_book} {_chapter}:{_verse}";
     }
 }

@@ -13,9 +13,8 @@ public class Scripture
         _words = new List<Word>();
         _random = new Random();
 
-        // StringSplitOptions.RemoveEmptyEntries
+        //split text to different words
         string[] parts = text.Split(' ');
-
         foreach (string part in parts)
         {
             _words.Add(new Word(part));
@@ -29,6 +28,7 @@ public class Scripture
 
         for (int i = 0; i < _words.Count; i++)
         {
+            //if word is not hidden, add the word to visible list
             if (!_words[i].IsHidden())
             {
                 visibleIndexes.Add(i);
@@ -37,6 +37,7 @@ public class Scripture
 
         int hideCount = Math.Min(numberToHide, visibleIndexes.Count);
 
+        //picks a a random visible word and hide it
         for (int i = 0; i < hideCount; i++)
         {
             int pick = _random.Next(visibleIndexes.Count);
@@ -58,7 +59,7 @@ public class Scripture
             output.Add(w.GetDisplayText());
         }
 
-        return $"{_reference.GetDisplayText()} - {output + " "}";
+        return $"{_reference.GetDisplayText()} : \n{string.Join(" ", output)}";
     }
 
     public bool IsCompletelyHidden()

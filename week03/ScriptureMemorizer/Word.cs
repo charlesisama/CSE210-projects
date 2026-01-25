@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using System.Text.Encodings.Web;
 
 public class Word
 {
@@ -29,26 +30,14 @@ public class Word
 
     public string GetDisplayText()
     {
-        if (!_isHidden)
+        if (_isHidden)
+        {
+            return new string ('_', _text.Length);
+        }
+        else
         {
             return _text;
         }
 
-    
-        StringBuilder sb = new StringBuilder();
-
-        foreach (char c in _text)
-        {
-            if (char.IsLetterOrDigit(c))
-            {
-                sb.Append('_');
-            }
-            else
-            {
-                sb.Append(c);
-            }
-        }
-
-        return sb.ToString();
     }
 }
