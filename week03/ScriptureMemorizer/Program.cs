@@ -44,7 +44,7 @@ class Program
                 break;
             }
 
-            // Hide a few words each round (you can adjust this number)
+            // hide 3 words at a time
             scripture.HideRandomWords(3);
 
             if (scripture.IsCompletelyHidden())

@@ -12,7 +12,7 @@ public class Reference
     private int _startVerse;
     private int _endVerse;
 
-    // Optional default constructor (not required, but allowed)
+ 
     public Reference()
     {
         _book = "";
@@ -29,7 +29,6 @@ public class Reference
         _chapter = chapter;
         _verse = verse;
 
-        // Range fields not used
         _startVerse = 0;
         _endVerse = 0;
     }
@@ -42,7 +41,6 @@ public class Reference
         _startVerse = startVerse;
         _endVerse = endVerse;
 
-        // Single verse field not used
         _verse = 0;
     }
 
