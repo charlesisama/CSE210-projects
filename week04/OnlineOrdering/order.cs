@@ -26,7 +26,15 @@ public class Order
         }
 
         // One-time shipping cost based on location
-        decimal shippingCost = _customer.LivesInUSA() ? 5m : 35m;
+        decimal shippingCost;
+        if (_customer.LivesInUSA()) 
+        {
+            shippingCost =5m;
+        }
+        else
+        {
+            shippingCost = 35m;
+        }
 
         return total + shippingCost;
     }
@@ -41,7 +49,7 @@ public class Order
             label += $"{product.GetName()} (ID: {product.GetProductId()})\n";
         }
 
-        return label.TrimEnd(); // removes trailing newline
+        return label.TrimEnd(); 
     }
 
     public string GetShippingLabel()
