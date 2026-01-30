@@ -7,6 +7,7 @@ class Program
     {
 
         Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+
         // Create list of videos
         List<Video> videos = new List<Video>();
 
@@ -14,6 +15,7 @@ class Program
         // Video 1 + Comments
         
         Video v1 = new Video("C# Abstraction Explained Simply", "CodeWithCharlie", 485);
+        
         v1.AddComment(new Comment("Amina", "This finally made abstraction clear. Thanks!"));
         v1.AddComment(new Comment("Tunde", "Nice examples. Please do encapsulation next."));
         v1.AddComment(new Comment("John", "Short and direct. I like it."));
@@ -21,7 +23,7 @@ class Program
 
         
         // Video 2 + Comments
-        
+    
         Video v2 = new Video("JavaScript Array Methods: map, filter, reduce", "Charles.I", 720);
         v2.AddComment(new Comment("Zainab", "map() clicked instantly from your example."));
         v2.AddComment(new Comment("Fola", "reduce() still confuses me a bit lol"));

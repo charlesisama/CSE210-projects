@@ -17,12 +17,12 @@ public class Video
 
     public string GetTitle()
     {
-        return _title;
+        return _title;     
     }
 
     public string GetAuthor()
     {
-        return _author;
+        return _author;    
     }
 
     public int GetLengthSeconds()
