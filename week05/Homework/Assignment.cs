@@ -1,4 +1,3 @@
-using System;
 
 public class Assignment
 {
@@ -11,8 +10,17 @@ public class Assignment
         _topic = topic;
     }
 
+    public string GetStudentName()
+    {
+        return _studentName;
+    }
+
+    public string GetTopic()
+    {
+        return _topic;
+    }
     public string GetSummary()
     {
-        return $"{_studentName} : {_topic}";
+        return _studentName + " - " + _topic;
     }
 }
