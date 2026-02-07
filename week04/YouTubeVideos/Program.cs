@@ -58,7 +58,7 @@ class Program
                 Console.WriteLine($"- {comment.GetName()}: {comment.GetText()}");
             }
 
-            Console.WriteLine("====================================");
+            Console.WriteLine("=====================================");
             Console.WriteLine();
         }
     }
