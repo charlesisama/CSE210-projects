@@ -137,7 +137,7 @@ public class GoalManager
         int earned = _goals[index].RecordEvent();
         _score += earned;
 
-        Console.WriteLine($"You earned {earned} points!");
+        Console.WriteLine($"Horray!!! You earned {earned} points!");
         Console.WriteLine("✨ Keep pushing forward!");
     }
 
