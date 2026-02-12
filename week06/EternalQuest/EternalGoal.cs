@@ -1,23 +1,24 @@
+using System;
+
 public class EternalGoal : Goal
 {
-    
-    public EternalGoal (string name, string description, string points) : base (name, description, points)
+    public EternalGoal(string name, string description, int points)
+        : base(name, description, points) { }
+
+    public override int RecordEvent()
     {
-        
+        return GetPoints();
     }
 
-     public override void RecordEvent ()
+    public override bool IsComplete() => false;
+
+    public override string GetDetailsString()
     {
-        
+        return $"[ ] {GetName()} ({GetDescription()})";
     }
 
-    public override bool IsComplete ()
+    public override string GetStringRepresentation()
     {
-        return true;
-    }
-
-     public override string GetStringRepresentation()
-    {
-        return "";
+        return $"Eternal|{GetName()}|{GetDescription()}|{GetPoints()}";
     }
 }
