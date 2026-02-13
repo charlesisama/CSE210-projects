@@ -1,0 +1,5 @@
+1540
+Eternal|Read the Scriptures|Study the scriputres 30 minutes every day|200
+Eternal|Prayers|Say my morning devotions|200
+Checklist|attend Gathering|prepare, attend and contribute on weekly Religion gathering|200|40|5|5
+Simple|check Unread emails|check and reply to unread messages|100|True
