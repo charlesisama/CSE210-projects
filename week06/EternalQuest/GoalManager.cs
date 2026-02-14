@@ -7,21 +7,39 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
- 
+    private string _username = "user";
+
+    // Motivational quotes
+    private readonly List<string> _quotes = new List<string>
+    {
+        "Small steps every day add up to big results.",
+        "You are only what you believe and choose to be",
+        "Discipline beats motivation when motivation fades.",
+        "Progress, not perfection.",
+        "You don’t have to be great to start, but you have to start to be great.",
+        "Keep going — your future self will thank you.",
+        "Consistency is a superpower.",
+        "Focus on the next step, not the whole staircase."
+    };
+
+    private readonly Random _rand = new Random();
 
     public GoalManager(int startingScore = 0)
     {
         _score = startingScore;
     }
 
-    public void Start(string username)
+
+    public void Start()
     {
         string choice = "";
 
         while (choice != "6")
         {
             Console.Clear();
-            Console.WriteLine($"Welcome back {username}");
+
+            Console.WriteLine($"Welcome back {_username}");
+            Console.WriteLine($"💡 {GetRandomQuote()}");
             DisplayPlayerInfo();
 
             Console.WriteLine("\nMenu Options:");
@@ -31,31 +49,41 @@ public class GoalManager
             Console.WriteLine(" 4. Load Goals");
             Console.WriteLine(" 5. Record Event");
             Console.WriteLine(" 6. Quit");
-            Console.Write("Select a choicefrom the Menu: ");
+            Console.Write("Select a choice from the Menu: ");
             choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1": CreateGoals(); Pause(); break;
                 case "2": ListGoalsDetails(); Pause(); break;
+
                 case "3":
                     Console.Write("Filename to save: ");
                     SaveGoals(Console.ReadLine());
                     Pause();
                     break;
+
                 case "4":
                     Console.Write("Filename to load: ");
                     LoadGoals(Console.ReadLine());
                     Pause();
                     break;
+
                 case "5": RecordEvent(); Pause(); break;
                 case "6": Console.WriteLine("Goodbye!"); break;
+
                 default:
                     Console.WriteLine("Invalid choice.");
                     Pause();
                     break;
             }
         }
+    }
+
+    private string GetRandomQuote()
+    {
+        if (_quotes.Count == 0) return "Keep pushing forward!";
+        return _quotes[_rand.Next(_quotes.Count)];
     }
 
     public void DisplayPlayerInfo()
@@ -83,7 +111,7 @@ public class GoalManager
         Console.WriteLine("\n1. Simple Goal");
         Console.WriteLine("2. Eternal Goal");
         Console.WriteLine("3. Checklist Goal");
-        Console.Write("which type of goal would you like to create: ");
+        Console.Write("Which type of goal would you like to create: ");
         string type = Console.ReadLine();
 
         Console.Write("What is the name of your goal?: ");
@@ -104,8 +132,8 @@ public class GoalManager
         }
         else if (type == "3")
         {
-            int target = ReadInt("How many times does this goal needs to be accomplished for a bonus: ");
-            int bonus = ReadInt("What is the bonus for accomplishing it many times?: ");
+            int target = ReadInt("How many times does this goal need to be accomplished for a bonus: ");
+            int bonus = ReadInt("What is the bonus for accomplishing it that many times?: ");
 
             _goals.Add(new ChecklistGoal(name, desc, points, target, bonus));
         }
@@ -146,9 +174,18 @@ public class GoalManager
 
     public void SaveGoals(string filename)
     {
+        
+        if (_username == "user")
+        {
+            Console.Write("Enter your username");
+            _username = Console.ReadLine();
+        }
         using (StreamWriter writer = new StreamWriter(filename))
         {
+            // Save username and score first
+            writer.WriteLine(_username);
             writer.WriteLine(_score);
+
             foreach (Goal goal in _goals)
             {
                 writer.WriteLine(goal.GetStringRepresentation());
@@ -160,7 +197,6 @@ public class GoalManager
 
     public void LoadGoals(string filename)
     {
-        
         if (!File.Exists(filename))
         {
             Console.WriteLine("File not found.");
@@ -168,11 +204,19 @@ public class GoalManager
         }
 
         string[] lines = File.ReadAllLines(filename);
+        if (lines.Length < 2)
+        {
+            Console.WriteLine("File format invalid.");
+            return;
+        }
+
         _goals.Clear();
 
-        _score = int.Parse(lines[0]);
 
-        for (int i = 1; i < lines.Length; i++)
+        _username = lines[0].Trim();
+        _score = int.Parse(lines[1]);
+
+        for (int i = 2; i < lines.Length; i++)
         {
             string[] parts = lines[i].Split('|');
 
@@ -192,8 +236,7 @@ public class GoalManager
                     int.Parse(parts[6])));
         }
 
-        Console.WriteLine("Goals loaded.");
-        
+        Console.WriteLine($"Goals loaded. Welcome back, {_username}!");
     }
 
     private static int ReadInt(string prompt)

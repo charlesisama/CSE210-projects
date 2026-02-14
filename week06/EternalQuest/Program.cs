@@ -4,7 +4,8 @@ using System;
 // EXCEEDING REQUIREMENTS:
 // 1) Added a simple Level system (every 1000 points = new level).
 // 2) Added celebration message when earning points.
-//3) Added username
+// 3) Added username (only shows after load)
+// 4) Random motivational quote after welcome
 // =============================================================
 
 class Program
@@ -13,6 +14,6 @@ class Program
     {
         Console.WriteLine("Welcome to Eternal Quest Program!");
         GoalManager manager = new GoalManager();
-        manager.Start("Charles Isama");
+        manager.Start();
     }
 }
