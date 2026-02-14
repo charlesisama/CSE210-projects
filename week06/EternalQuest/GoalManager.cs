@@ -7,18 +7,21 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
+ 
+
     public GoalManager(int startingScore = 0)
     {
         _score = startingScore;
     }
 
-    public void Start()
+    public void Start(string username)
     {
         string choice = "";
 
         while (choice != "6")
         {
             Console.Clear();
+            Console.WriteLine($"Welcome back {username}");
             DisplayPlayerInfo();
 
             Console.WriteLine("\nMenu Options:");
@@ -157,6 +160,7 @@ public class GoalManager
 
     public void LoadGoals(string filename)
     {
+        
         if (!File.Exists(filename))
         {
             Console.WriteLine("File not found.");
@@ -189,6 +193,7 @@ public class GoalManager
         }
 
         Console.WriteLine("Goals loaded.");
+        
     }
 
     private static int ReadInt(string prompt)
