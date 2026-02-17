@@ -9,7 +9,8 @@ public class CyclingActivity : Activity
 
     public override float GetDistance()
     {
-        return GetDistance();
+        
+        return (_speed * GetLength()) / 60f;
     }
     public override float GetSpeed()
     {
@@ -17,11 +18,9 @@ public class CyclingActivity : Activity
     }
     public override float GetPace()
     {
-        return GetLength() / GetDistance() * 60;
+        return GetLength() / GetDistance();
     }
     
-    public override string GetSummary()
-    {
-        return $"{GetDate()} Cycling ({GetLength()}) -- Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile";
-    } 
+    public override string GetActivityName() => "Cyling";
+
 }

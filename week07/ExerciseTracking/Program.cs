@@ -18,10 +18,14 @@ class Program
         activities.Add(cycling);
         activities.Add(swimming);
 
+        Console.WriteLine("===========================================");
+
         foreach (Activity activity in activities)
         {
             string summary = activity.GetSummary();
             Console.WriteLine(summary);
         }
+
+        Console.WriteLine("===========================================");
     }
 }

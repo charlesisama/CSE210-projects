@@ -2,11 +2,12 @@ public class RunningActivity : Activity
 {
     private float _distance;
 
+ 
+
     public RunningActivity(string date, float length, float distance) : base(date, length)
     {
         _distance = distance;
     }
-    
 
     public override float GetDistance()
     {
@@ -18,11 +19,11 @@ public class RunningActivity : Activity
     }
     public override float GetPace()
     {
-        return GetLength() / GetDistance() * 60;
+        return GetLength() / GetDistance();
     }
 
-    public override string GetSummary()
-    {
-        return $"{GetDate()} Running ({GetLength()}) -- Distance: {_distance} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile";
-    }
+    public override string GetActivityName() => "Running";
+
+
+   
 }

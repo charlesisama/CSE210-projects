@@ -1,9 +1,16 @@
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+
 
 public abstract class Activity
 {
     private string _date;
     private float _lengthOfActivity;
+
+    public Activity()
+    {
+        
+    }
 
     public Activity(string date, float length)
     {
@@ -25,8 +32,12 @@ public abstract class Activity
     public abstract float GetSpeed();
     public abstract float GetPace();
 
-    public virtual string GetSummary()
+    public virtual string GetActivityName() => "Activity";
+
+    public string GetSummary()
     {
-        return "";
+        return $"{_date} {GetActivityName()} ({_lengthOfActivity} min)- " +
+            $"Distance: {GetDistance():0.0} miles, Speed: {GetSpeed():0.0} mph, Pace: {GetPace():0.00} min per mile";
     }
+
 }
