@@ -1,0 +1,4 @@
+charles
+300
+Eternal|study the scripture|study the scripture 30 min everyday|200
+Checklist|Go to temple|attend temple gatherings every week|100|20|1|4
