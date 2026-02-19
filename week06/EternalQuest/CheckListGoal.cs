@@ -29,12 +29,12 @@ public class ChecklistGoal : Goal
         return earned;
     }
 
-    public override bool IsComplete() => _amountCompleted >= _target;
+    public override bool IsComplete() => _amountCompleted == _target;
 
     public override string GetDetailsString()
     {
         string box = IsComplete() ? "[X]" : "[ ]";
-        return $"{box} {GetName()} ({GetDescription()}) -- Completed {_amountCompleted}/{_target} times";
+        return $"{box} {GetName()} ({GetDescription()}) -- Completed {_amountCompleted} / {_target}  times";
     }
 
     public override string GetStringRepresentation()
