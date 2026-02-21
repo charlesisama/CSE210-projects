@@ -34,7 +34,7 @@ public class ChecklistGoal : Goal
     public override string GetDetailsString()
     {
         string box = IsComplete() ? "[X]" : "[ ]";
-        return $"{box} {GetName()} ({GetDescription()}) -- Completed  {_target} / {_amountCompleted}   times";
+        return $"{box} {GetName()} ({GetDescription()}) -- Completed {_amountCompleted} / {_target}  times";
     }
 
     public override string GetStringRepresentation()
